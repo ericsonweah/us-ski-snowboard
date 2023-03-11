@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3"
+  }
+}
