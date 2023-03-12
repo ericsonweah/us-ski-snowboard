@@ -23,18 +23,17 @@ const app = new Koa();
 app.use(bodyParser());
 app.use(json());
 
-render(app, {
-  root: join(__dirname, 'views'),
-  layout: 'layout',
-  viewExt: 'html',
-  cache: false,
-     debug: false
-});
+// render(app, {
+//   root: join(__dirname, 'views'),
+//   layout: 'layout',
+//   viewExt: 'html',
+//   cache: false,
+// });
  
 
 
 // Register Routes
-require('./routes')(app);
+// require('./routes')(app);
 
   
 

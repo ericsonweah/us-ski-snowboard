@@ -3,7 +3,7 @@
 /**
  * @author Ericson S. Weah  <ericson.weah@gmail.com> <https://github.com/eweah>  <+1.385.204.5167>
  *
- * @module Controller
+ * @module Base
  * @kind class
  *
  * @extends Transform
@@ -14,9 +14,8 @@
  * @requires get
  * @requires request
  * @requires parse
- * @classdesc Controller class
+ * @classdesc Base class
  */
-
 
 const {readdirSync,statSync } = require('fs');
 const { join } = require('path');
@@ -24,7 +23,7 @@ const { join } = require('path');
 const  {get, request} = require('https');
 const {parse} = require('url')
 
-class Controller extends require("stream").Transform {
+class Base extends require("stream").Transform {
 
   constructor(...arrayOfObjects) {
 
@@ -37,48 +36,17 @@ class Controller extends require("stream").Transform {
     });
 
     // auto bind methods
-    this.autobind(Controller);
+    this.autobind(Base);
     // auto invoke methods
-    this.autoinvoker(Controller);
+    this.autoinvoker(Base);
     // add other classes method if methods do not already exist. Argument order matters!
     // this.methodizer(..classList);
     //Set the maximum number of listeners to infinity
     this.setMaxListeners(Infinity);
   }
 
-  path (path = '', Controller = './app/controllers/http') {
-    return require('path').join(Controller, path)
-  }
-
-  /**
-     * @name getFiles
-     * @function
-     *
-     * @param {Object|Array} iterable iterable data to absorb
-     * @param {Object} options Options provided to new stream.Readable([options]). By default, Readable.from() will set options.objectMode to true, unless this is explicitly opted out by setting options.objectMode to false.
-     * 
-     * @description creates readable streams out of iterators.
-
-
-     * 
-     * @return {Controller}
-     * 
-     */
-  getFiles(dirPath){
-    {
-      files = readdirSync(dirPath)
-    
-      arrayOfFiles = arrayOfFiles || []
-    
-      files.forEach(function(file) {
-        if (statSync(dirPath + "/" + file).isDirectory()) {
-          arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
-        } else {
-          arrayOfFiles.push(join(__dirname, dirPath, "/", file))
-        }
-      })
-      return arrayOfFiles
-    }
+  path (path = '', base = './app/controllers/http') {
+    return require('path').join(base, path)
   }
 
   /**
@@ -92,39 +60,7 @@ class Controller extends require("stream").Transform {
 
 
      * 
-     * @return {Controller}
-     * 
-     */
-  async readdirRecursive(dirPath, files = []){
-      try{
-          const allFiles = await fs.promises.readdir(dirPath);
-          if(allFiles){
-              for await(let file of allFiles){
-                  if((await fs.promises.stat(dirPath + "/" + file)).isDirectory()){
-                      files = readdirRecursive(dirPath + "/" + file, files);
-                  }else{
-                      // files.push(path.join(__dirname, dirPath, "/", file)) 
-                  }
-              }
-          }
-          //return files;
-      }catch(error){
-          return error;
-      }
-  
-   }
-  /**
-     * @name getFromIterable
-     * @function
-     *
-     * @param {Object|Array} iterable iterable data to absorb
-     * @param {Object} options Options provided to new stream.Readable([options]). By default, Readable.from() will set options.objectMode to true, unless this is explicitly opted out by setting options.objectMode to false.
-     * 
-     * @description creates readable streams out of iterators.
-
-
-     * 
-     * @return {Controller}
+     * @return {Base}
      * 
      */
 
@@ -132,7 +68,7 @@ class Controller extends require("stream").Transform {
     iterable = {} | [],
     options = { objectMode: true, encoding: "utf-8", autoDestroy: true }
   ) {
-    return Controller.from(JSON.stringify(iterable), options);
+    return Base.from(JSON.stringify(iterable), options);
   }
 
    /**
@@ -506,7 +442,7 @@ class Controller extends require("stream").Transform {
 
      Implementors should not override this method but instead implement readable._destroy().
     *    
-    * @return Controller
+    * @return Base
     * 
     */
 
@@ -568,7 +504,7 @@ class Controller extends require("stream").Transform {
   
       The Readable stream will properly handle multi-byte characters delivered through the stream that would otherwise become improperly decoded if simply pulled from the stream as Buffer objects.
        *    
-       * @return Controller The destination, allowing for a chain of pipes if it is a Duplex or a Transform stream
+       * @return Base The destination, allowing for a chain of pipes if it is a Duplex or a Transform stream
        * 
        */
 
@@ -587,7 +523,7 @@ class Controller extends require("stream").Transform {
   
         If the destination is specified, but no pipe is set up for it, then the method does nothing.
        *    
-       * @return Controller 
+       * @return Base 
        * 
        */
 
@@ -610,7 +546,7 @@ class Controller extends require("stream").Transform {
   
       Developers using stream.unshift() often should consider switching to the use of a Transform stream instead. See the API for stream implementers section for more information.
        *    
-       * @return Controller 
+       * @return Base 
        * 
        */
 
@@ -629,7 +565,7 @@ class Controller extends require("stream").Transform {
   
       It will rarely be necessary to use readable.wrap() but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
        *    
-       * @return Controller 
+       * @return Base 
        * 
        */
 
@@ -721,7 +657,7 @@ class Controller extends require("stream").Transform {
  
        If the destination is specified, but no pipe is set up for it, then the method does nothing.
       *    
-      * @return Controller 
+      * @return Base 
       * 
       */
 
@@ -744,7 +680,7 @@ class Controller extends require("stream").Transform {
  
      Developers using stream.unshift() often should consider switching to the use of a Transform stream instead. See the API for stream implementers section for more information.
       *    
-      * @return Controller 
+      * @return Base 
       * 
       */
 
@@ -763,7 +699,7 @@ class Controller extends require("stream").Transform {
  
      It will rarely be necessary to use readable.wrap() but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
       *    
-      * @return Controller 
+      * @return Base 
       * 
       */
 
@@ -789,4 +725,4 @@ class Controller extends require("stream").Transform {
   _destroy(error, fn = () => {}) {}
 }
 
-module.exports = Controller;
+module.exports = Base;

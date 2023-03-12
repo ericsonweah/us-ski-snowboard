@@ -12,7 +12,9 @@
  * @classdesc MembersController class
  */
 
+
 const {createReadStream} = require('fs')
+const Model = require('../../models/Model');
 
 class MembersController extends require("./Controller") {
 
@@ -53,8 +55,8 @@ class MembersController extends require("./Controller") {
    */
 
     async index(ctx, next) {
-        ctx.type = 'html';
-        ctx.body = createReadStream(process.cwd() + '/public/members.html');
+        const Member = new Model({table: 'members'});
+        await ctx.render('members', {members: await Member.all()});
      }
     
     

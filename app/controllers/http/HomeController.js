@@ -53,8 +53,7 @@ class HomeController extends require("./Controller") {
    */
 
      async index(ctx, next) {
-        ctx.type = 'html';
-        ctx.body = createReadStream(process.cwd() + '/public/index.html');
+        await ctx.render('index', {title: 'Welcome'})
      }
     
     

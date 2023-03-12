@@ -13,13 +13,11 @@ process.on('unhandledRejection', function(err) {
 });
 
 
-
 const app = require('./app');
 
 module.exports = app.listen(PORT, HOST, function(err) {
 	if (err) {
 		throw err;
 	}
-
 	console.log(`Server listening on port: ${HOST}:${PORT}`);
 });
