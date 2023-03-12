@@ -17,7 +17,7 @@
 
 // const AsyncAwait = require('./AsyncAwait')
 // const Callback = require('./Callback');
-const BaseModel = require('../../src/models/Model')
+const BaseModel = require('model')
 
 class Model extends BaseModel {
 
@@ -204,4 +204,5 @@ class Model extends BaseModel {
 
 module.exports = Model;
 
+console.log(Model)
 
