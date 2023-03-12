@@ -11,13 +11,6 @@ const json = require('koa-json');
 
 const koaStatic = require('koa-static');
 
-// var views = require('koa-views');
-
-// const render = views(__dirname + '/views', {
-//   map: {
-//     html: 'underscore'
-//   }
-// })
 
 const app = new Koa();
 app.use(bodyParser());
@@ -37,11 +30,7 @@ render(app, {
 require('./routes')(app);
 
   
-
-
 // Serve static files from public directory
 app.use(koaStatic('./public'));
-
-
 
 module.exports = app;

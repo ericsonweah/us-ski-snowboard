@@ -1,7 +1,13 @@
 "use strict";
 
 /**
- * @author Ericson S. Weah  <ericson.weah@gmail.com> <https://github.com/eweah>  <+1.385.204.5167>
+ * @author Ericson S. Weah  
+ *    emaiil: ericson.weah@ericsonweah.dev
+ *    github: https://github.com/ericsonweah
+ *    phone: +1.385.204.5167
+ *    Dev Profile: https://www.ericsonsweah.dev 
+ *    Dev Website: https://www.ericsonweah.dev
+ *    Other Website: https://www.ericsonsweah.com
  *
  * @module HomeController
  * @kind class
@@ -12,7 +18,6 @@
  * @classdesc HomeController class
  */
 
-const {createReadStream} = require('fs')
 const Model = require('../../models/Model');
 
 class HomeController extends require("./Controller") {
@@ -55,7 +60,6 @@ class HomeController extends require("./Controller") {
 
     async index(ctx, next, Member = new Model({table: 'members'})) {
         await ctx.render('index', {members: await Member.membersDetails()});
-        // ctx.body = await Member.membersDetails();
      }
     
     

@@ -1,16 +1,19 @@
 "use strict";
 
 /**
- * @author Ericson S. Weah  <ericson.weah@gmail.com> <https://github.com/eweah>  <+1.385.204.5167>
+ *  @author Ericson S. Weah  
+ *    emaiil: ericson.weah@ericsonweah.dev
+ *    github: https://github.com/ericsonweah
+ *    phone: +1.385.204.5167
+ *    Dev Profile: https://www.ericsonsweah.dev 
+ *    Dev Website: https://www.ericsonweah.dev
+ *    Other Website: https://www.ericsonsweah.com
  *
  * @module Base
  * @kind class
  *
  * @extends Transform
  * @requires Transform
- * @requires createReadStream
- * @requires createWriteStream
- * @requires promises
  * @requires get
  * @requires request
  * @requires parse
@@ -31,7 +34,7 @@ class Base extends require("stream").Transform {
 
     arrayOfObjects.forEach(option => {
         if(Object.keys(option).length > 0){
-            Object.keys(option).forEach((key) => { if(!this[key]) this[key] = option[key];})
+           Object.keys(option).forEach((key) => { if(!this[key]) this[key] = option[key];})
         }
     });
 
@@ -80,38 +83,6 @@ class Base extends require("stream").Transform {
     }
   }
 
-  /**
-     * @name getFromIterable
-     * @function
-     *
-     * @param {Object|Array} iterable iterable data to absorb
-     * @param {Object} options Options provided to new stream.Readable([options]). By default, Readable.from() will set options.objectMode to true, unless this is explicitly opted out by setting options.objectMode to false.
-     * 
-     * @description creates readable streams out of iterators.
-
-
-     * 
-     * @return {Base}
-     * 
-     */
-  async readdirRecursive(dirPath, files = []){
-      try{
-          const allFiles = await fs.promises.readdir(dirPath);
-          if(allFiles){
-              for await(let file of allFiles){
-                  if((await fs.promises.stat(dirPath + "/" + file)).isDirectory()){
-                      files = readdirRecursive(dirPath + "/" + file, files);
-                  }else{
-                      // files.push(path.join(__dirname, dirPath, "/", file)) 
-                  }
-              }
-          }
-          //return files;
-      }catch(error){
-          return error;
-      }
-  
-   }
   /**
      * @name getFromIterable
      * @function
