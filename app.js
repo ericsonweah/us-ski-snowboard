@@ -24,8 +24,6 @@ render(app, {
      debug: false
 });
  
-
-
 // Register Routes
 require('./routes')(app);
 
