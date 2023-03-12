@@ -54,9 +54,9 @@ class MembersController extends require("./Controller") {
    *
    */
 
-    async index(ctx, next) {
-        const Member = new Model({table: 'members'});
-        await ctx.render('members', {members: await Member.all()});
+    async index(ctx, next, Member = new Model({table: 'members'})) {
+        await ctx.render('members', {members: await Member.membersDetails()});
+        // ctx.body = await Member.membersDetails();
      }
     
     

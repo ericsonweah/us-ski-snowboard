@@ -54,9 +54,33 @@ class AsyncAwait extends require("./Base") {
     return records;
   }
 
+  async membersDetails() {
+    const records = await new Promise((resolve, reject) => {
+      db.all(`SELECT * FROM members INNER JOIN addresses ON members.id = addresses.memberId`, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+    return records;
+  }
+
   async findBy(column = 'colum name', value = 'column value', success = 'success', error = 'error', table = this.table || 'members') {
     const records = await new Promise((resolve, reject) => {
       db.all(`SELECT * FROM ${table} WHERE ${column}='${value}'`, (err, rows) => {
+        if (err) {
+          this.emit(error, err);
+          reject(err);
+        } else {
+          this.emit(success, rows);
+          resolve(rows);
+        }
+      });
+    });
+    return records;
+  }
+  async findByQuery(query, success = 'success', error = 'error', table = this.table || 'members') {
+    const records = await new Promise((resolve, reject) => {
+      db.all(query, (err, rows) => {
         if (err) {
           this.emit(error, err);
           reject(err);

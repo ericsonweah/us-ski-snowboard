@@ -13,6 +13,7 @@
  */
 
 const {createReadStream} = require('fs')
+const Model = require('../../models/Model');
 
 class HomeController extends require("./Controller") {
 
@@ -52,9 +53,11 @@ class HomeController extends require("./Controller") {
    *
    */
 
-     async index(ctx, next) {
-        await ctx.render('index', {title: 'Welcome'})
+    async index(ctx, next, Member = new Model({table: 'members'})) {
+        await ctx.render('index', {members: await Member.membersDetails()});
+        // ctx.body = await Member.membersDetails();
      }
+    
     
     
       /**
