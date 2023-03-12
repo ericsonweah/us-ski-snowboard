@@ -22,7 +22,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./data/sqlitedb');
 
-class AsyncAwait extends require("./Base") {
+class AsyncAwait extends require("../Base") {
 
   constructor(...arrayOfObjects) {
 

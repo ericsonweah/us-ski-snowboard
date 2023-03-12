@@ -23,7 +23,7 @@
 
 const sqlite3 = require('sqlite3').verbose();
 
-class Callback extends require("./Base") {
+class Callback extends require("../Base") {
 
     constructor(...arrayOfObjects) {
 

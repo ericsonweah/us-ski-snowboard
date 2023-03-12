@@ -15,10 +15,11 @@
  * @classdesc Model class
  */
 
-const AsyncAwait = require('./AsyncAwait')
+// const AsyncAwait = require('./AsyncAwait')
 // const Callback = require('./Callback');
+const BaseModel = require('../../src/models/Model')
 
-class Model extends require("./Base") {
+class Model extends BaseModel {
 
     constructor(...arrayOfObjects) {
 
@@ -35,7 +36,7 @@ class Model extends require("./Base") {
         // auto invoke methods
         this.autoinvoker(Model);
         // add other classes method if methods do not already exist. Argument order matters!
-        this.methodizer(AsyncAwait);
+        // this.methodizer(AsyncAwait);
         //Set the maximum number of listeners to infinity
         this.setMaxListeners(Infinity);
       }
