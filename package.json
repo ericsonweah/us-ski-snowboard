@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/ericsonweah/us-ski-snowboard#readme",
   "dependencies": {
+    "address-controller": "file:modules/address-controller",
     "base": "file:modules/base",
     "home-controller": "file:modules/home-controller",
     "jest": "^29.5.0",
@@ -39,6 +40,7 @@
     "koa-static": "^5.0.0",
     "koa-views": "^8.0.0",
     "koa-views-render": "^0.0.1",
+    "member-controller": "file:modules/member-controller",
     "model": "file:modules/model",
     "pagination": "file:modules/pagination",
     "redis": "^4.6.5",

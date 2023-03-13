@@ -1,0 +1,29 @@
+{
+  "name": "member-controller",
+  "version": "1.0.0",
+  "description": "Member Controller",
+  "main": "index.js",
+  "bin": {
+    "member-controller": "bin/index.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Controller",
+    "Transform",
+    "EventEmitter"
+  ],
+  "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "base": "file:../base",
+    "model": "file:../model",
+    "pagination": "file:../pagination"
+  }
+}
