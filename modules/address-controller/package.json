@@ -6,11 +6,7 @@
   "bin": {
     "address-controller": "bin/index.js"
   },
-  "directories": {
-    "doc": "docs",
-    "lib": "lib",
-    "test": "test"
-  },
+  "directories": {},
   "scripts": {
     "test": "test"
   },
@@ -24,6 +20,7 @@
   "dependencies": {
     "base": "file:../base",
     "model": "file:../model",
-    "pagination": "file:../pagination"
+    "pagination": "file:../pagination",
+    "redis-cache": "file:../redis-cache"
   }
 }

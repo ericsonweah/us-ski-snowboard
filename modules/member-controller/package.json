@@ -24,6 +24,7 @@
   "dependencies": {
     "base": "file:../base",
     "model": "file:../model",
-    "pagination": "file:../pagination"
+    "pagination": "file:../pagination",
+    "redis-cache": "file:../redis-cache"
   }
 }

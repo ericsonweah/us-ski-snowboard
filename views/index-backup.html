@@ -1,0 +1,28 @@
+<div class='container-fluid'>
+    <% members.forEach(function(member){ %>
+        <div class="row content member" >
+            <div class="col p-3 text-dark">
+                <strong>Name:</strong> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%- member.firstName.toUpperCase(); %> <%- member.lastName.toUpperCase(); %><br/>
+                <strong>Company: </strong> &nbsp; &nbsp;&nbsp;&nbsp; <%- member.company.toUpperCase(); %> <br/>
+                <strong>Title:</strong> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%- member.title.toUpperCase(); %> <br/>
+                <strong>Department:</strong> <%- member.department.toUpperCase(); %><br/>
+            </div>
+            <div class="col p-3  text-dark">
+                <strong>Phone:</strong> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%- member.phone.toUpperCase(); %> <br/>
+                <%if (member.primaryAddress !== 0) { %>
+                <strong>Address:</strong>
+                &nbsp; &nbsp;&nbsp;&nbsp; <%- member.address.toUpperCase(); %> <br/> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  <%- member.city.toUpperCase(); %>,  <%- member.state.toUpperCase(); %>  <%- member.zip.toUpperCase(); %>
+                    <br/>
+                <% } %>
+                <strong>Website:</strong> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <a href="<%- member.url; %>" clsss="text-white"><%- member.url.toUpperCase(); %></a> <br/>
+            </div>
+            <div class="col p-3 text-dark">
+                <img src="<%- member.image; %>"  alt="Cinque Terre" width="200px;" height="125x;">
+            </div>
+          </div>
+    <% }); %>
+    </div>
+    
+    
+    
+    

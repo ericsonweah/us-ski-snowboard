@@ -19,7 +19,6 @@
  */
 
 const Model = require('model');
-const redisCache = require('redis-cache');
 
 class AddressesController extends require("base") {
 
@@ -60,9 +59,6 @@ class AddressesController extends require("base") {
    */
 
     async index(ctx, next, Address = new Model({table: 'addresses'})) {
-
-        const count = await Address.count();
-        redisCache(ctx, count);
         await ctx.render('addresses', {addresses: await Address.all()});
      }
     

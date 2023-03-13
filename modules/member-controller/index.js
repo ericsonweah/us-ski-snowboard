@@ -20,8 +20,6 @@
 
 
 const Model = require('model');
-const redisCache = require('redis-cache');
-
 class MembersController extends require("base") {
 
   constructor(...arrayOfObjects) {
@@ -61,9 +59,6 @@ class MembersController extends require("base") {
    */
 
     async index(ctx, next, Member = new Model({table: 'members'})) {
-
-        const count = await Member.count();
-        redisCache(ctx, count);
         await ctx.render('members', {members: await Member.all()});
      }
     

@@ -1,23 +1,75 @@
 <div class='container-fluid'>
 <% members.forEach(function(member){ %>
-    <div class="row content member" >
-        <div class="col p-3 text-dark">
-            <strong>Name:</strong> <%- member.firstName; %> <%- member.lastName; %><br/>
-            <strong>Company: </strong> <%- member.company; %> <br/>
-            <strong>Title:</strong> <%- member.title; %> <br/>
-            <strong>Department:</strong> <%- member.department; %><br/>
+    <div class="row content member w3-mobile" >
+        <div class="col p-3 text-dark w3-mobile">
+            <div class="name w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile">
+                    <strong>Name:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile">
+                    <%- member.firstName.toUpperCase(); %> <%- member.lastName.toUpperCase(); %>
+                </div>   
+            </div>
+            <div class="company w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile">
+                    <strong>Company:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile">
+                    <%- member.company.toUpperCase(); %> 
+                </div>   
+            </div>
+            <div class="title w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile">
+                    <strong>Title:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile">
+                    <%- member.title.toUpperCase(); %> 
+                </div>   
+            </div>
+            
+            <div class="Department w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile">
+                    <strong>Department:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile">
+                    <%- member.department.toUpperCase(); %> 
+                </div>   
+            </div>
+            
         </div>
         <div class="col p-3  text-dark">
-            <strong>Phone:</strong> <%- member.phone; %> <br/>
+            <div class="phone w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile ">
+                    <strong>Phone:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile w3-left">
+                    <%- member.phone.toUpperCase(); %> 
+                </div>   
+            </div>
             <%if (member.primaryAddress !== 0) { %>
-            <strong>Address:</strong>
-                <%- member.address; %> , <%- member.city; %>,  <%- member.state; %>  <%- member.zip; %>
-                <br/>
+            <div class="address w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile w3-left">
+                    <strong>Address:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile w3-left">
+                    <%- member.address.toUpperCase(); %> <br />
+                    <%- member.city.toUpperCase(); %>, <%- member.state.toUpperCase(); %> <%- member.zip.toUpperCase(); %>
+                </div>   
+            </div>
             <% } %>
-            <strong>Website:</strong> <a href="<%- member.url; %>" clsss="text-white"><%- member.url; %></a> <br/>
+            <div class="website w3-row w3-mobile">
+                <div class="w3-quarter w3-mobile">
+                    <strong>Website:</strong>
+                </div> 
+                <div class="w3-rest w3-mobile w3-left">
+                    <a href="<%- member.url.toUpperCase(); %> "><%- member.url.toUpperCase(); %> </a>
+                </div>   
+            </div>
+
         </div>
-        <div class="col p-3 text-dark">
-            <img src="<%- member.image; %>"  alt="Cinque Terre" width="200px;" height="125x;">
+        <div class="col p-3 text-dark w3-mobile">
+            <img src="<%- member.image; %>"  alt="Cinque Terre" style="max-width: 100%;
+            height: 100px;" class="w3-mobile">
         </div>
       </div>
 <% }); %>
