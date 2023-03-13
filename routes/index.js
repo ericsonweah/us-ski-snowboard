@@ -1,3 +1,15 @@
+'use strict';
+/*
+|--------------------------------------------------------------------------
+| All Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register any web route for your application. These
+| routes are immediately mounted to the main app 
+
+|
+*/
+
 module.exports = app => {
 	// Mounting home router to app 
 	require('./home')(app);

@@ -1,3 +1,14 @@
+'use strict';
+/*
+|--------------------------------------------------------------------------
+| Cluster module 
+|--------------------------------------------------------------------------
+|
+| For cup usage and efficieny
+
+|
+*/
+
 const cluster = require('cluster');
 const os = require('os');
 
