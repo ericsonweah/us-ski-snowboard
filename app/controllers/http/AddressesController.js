@@ -19,9 +19,9 @@
  */
 
 
-const Model = require('../../models/Model');
+const Model = require('model');
 
-class AddressesController extends require("./Controller") {
+class AddressesController extends require("base") {
 
     constructor(...arrayOfObjects) {
 

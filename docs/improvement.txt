@@ -1,4 +1,4 @@
-1. Handling large SQLite data (load time and search)
+1. Handling large SQLite data (load time and search time) => use cursor, pagination, and the cluser module for the server
 2. Pagination 
 3. Caching 
 4. MVC 

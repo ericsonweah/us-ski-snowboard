@@ -9,20 +9,21 @@
  *    Dev Website: https://www.ericsonweah.dev
  *    Other Website: https://www.ericsonsweah.com
  *
- * @module AsyncAwait
+ * @module DBPromise
  * @kind class
  *
  * @extends Base
  * @requires Base
  * @requires sqlite3
  *
- * @classdesc AsyncAwait class
+ * @classdesc DBPromise class
  */
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./data/sqlitedb');
 
-class AsyncAwait extends require("../Base") {
+const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
+
+class DBPromise extends require("./base") {
 
   constructor(...arrayOfObjects) {
 
@@ -35,9 +36,9 @@ class AsyncAwait extends require("../Base") {
     });
 
     // auto bind methods
-    this.autobind(AsyncAwait);
+    this.autobind(DBPromise);
     // auto invoke methods
-    this.autoinvoker(AsyncAwait);
+    this.autoinvoker(DBPromise);
     // add other classes method if methods do not already exist. Argument order matters!
     // this.methodizer(..classList);
     //Set the maximum number of listeners to infinity
@@ -249,6 +250,9 @@ class AsyncAwait extends require("../Base") {
 
 }
 
-module.exports = AsyncAwait;
+module.exports = DBPromise;
+
+
+
 
 

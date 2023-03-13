@@ -6,8 +6,8 @@
  * @module Model
  * @kind class
  *
- * @extends Base
- * @requires Base
+ * @extends BaseModel
+ * @requires BaseModel
  * @requires MongoClient
  * @requires ObjectId
  * @requires EventEmitter
@@ -15,8 +15,6 @@
  * @classdesc Model class
  */
 
-// const AsyncAwait = require('./AsyncAwait')
-// const Callback = require('./Callback');
 const BaseModel = require('model')
 
 class Model extends BaseModel {

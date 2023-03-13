@@ -19,9 +19,9 @@
  */
 
 
-const Model = require('../../models/Model');
+const Model = require('model');
 
-class MembersController extends require("./Controller") {
+class MembersController extends require("base") {
 
   constructor(...arrayOfObjects) {
 

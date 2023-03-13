@@ -1,10 +1,10 @@
 {
-  "name": "model",
+  "name": "db-promise",
   "version": "0.0.0",
-  "description": "Model",
+  "description": "sqlite db-promise",
   "main": "index.js",
   "bin": {
-    "model": "bin/index.js"
+    "db-promise": "bin/index.js"
   },
   "directories": {
     "doc": "docs",
@@ -15,13 +15,13 @@
     "test": "vitest --globals"
   },
   "keywords": [
-    "SQLite",
-    "Transform",
-    "EventEmitter"
+    "sqlite",
+    "transform",
+    "eventEmitter"
   ],
   "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
   "license": "MIT",
   "dependencies": {
-    "db-promise": "file:../db-promise"
+    "sqlite3": "^5.1.4"
   }
 }
