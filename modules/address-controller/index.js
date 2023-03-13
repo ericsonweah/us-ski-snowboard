@@ -9,23 +9,19 @@
  *    Dev Website: https://www.ericsonweah.dev
  *    Other Website: https://www.ericsonsweah.com
  *
- * @module HomeController
+ * @module AddressesController
  * @kind class
  *
  * @extends Controller
  * @requires Controller
  *
- * @classdesc HomeController class
+ * @classdesc AddressesController class
  */
 
-const redis = require('redis');
-const client = redis.createClient();
-
 const Model = require('model');
-
 const redisCache = require('redis-cache');
 
-class HomeController extends require("base") {
+class AddressesController extends require("base") {
 
   constructor(...arrayOfObjects) {
 
@@ -38,9 +34,9 @@ class HomeController extends require("base") {
     });
 
     // auto bind methods
-    this.autobind(HomeController);
+    this.autobind(AddressesController);
     // auto invoke methods
-    this.autoinvoker(HomeController);
+    this.autoinvoker(AddressesController);
     // add other classes method if methods do not already exist. Argument order matters!
     // this.methodizer(..classList);
     //Set the maximum number of listeners to infinity
@@ -63,11 +59,11 @@ class HomeController extends require("base") {
    *
    */
 
-    async index(ctx, next, Member = new Model({table: 'members'})) {
+    async index(ctx, next, Address = new Model({table: 'addresses'})) {
 
-        const count = await Member.count();
+        const count = await Address.count();
         redisCache(ctx, count);
-        await ctx.render('index', {members: await Member.membersDetails()});
+        await ctx.render('addresses', {addresses: await Address.all()});
      }
     
     
@@ -153,4 +149,4 @@ class HomeController extends require("base") {
       async destroy(ctx, next) {}
  
 }
-module.exports = HomeController;
+module.exports = AddressesController;

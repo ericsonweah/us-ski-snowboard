@@ -20,7 +20,6 @@
 
 
 const Model = require('model');
-
 const redisCache = require('redis-cache');
 
 class MembersController extends require("base") {
@@ -65,7 +64,7 @@ class MembersController extends require("base") {
 
         const count = await Member.count();
         redisCache(ctx, count);
-        await ctx.render('addresses', {members: await Member.membersDetails()});
+        await ctx.render('members', {members: await Member.all()});
      }
     
     
