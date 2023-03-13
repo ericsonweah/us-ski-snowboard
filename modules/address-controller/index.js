@@ -59,7 +59,7 @@ class AddressesController extends require("base") {
    */
 
     async index(ctx, next, Address = new Model({table: 'addresses'})) {
-        await ctx.render('addresses', {addresses: await Address.all()});
+        // await ctx.render('addresses', {addresses: await Address.all()});
      }
     
     

@@ -59,7 +59,7 @@ class HomeController extends require("base") {
    */
 
     async index(ctx, next, Member = new Model({table: 'members'})) {
-        await ctx.render('index', {members: await Member.membersDetails()});
+        //await ctx.render('index', {members: await Member.membersDetails()});
      }
     
     

@@ -19,9 +19,8 @@
  * @classdesc DBPromise class
  */
 
-const sqlite3 = require('sqlite3').verbose();
-
-const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
+// const sqlite3 = require('sqlite3').verbose();
+// const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
 
 class DBPromise extends require("bases") {
 
@@ -80,7 +79,7 @@ class DBPromise extends require("bases") {
       });
     });
     return count;
-  
+
   }
 
   async findBy(column = 'colum name', value = 'column value', success = 'success', error = 'error', table = this.table || 'members') {
