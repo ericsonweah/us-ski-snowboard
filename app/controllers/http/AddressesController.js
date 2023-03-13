@@ -44,105 +44,91 @@ class AddressesController extends require("./Controller") {
     }
 
 
-    /**
-   * @name index
+  /**
+ * @name index
+ * @function
+ *
+ * @param {Object|Stream} ctx Koa contect Object
+ * @param {Object|Function} next middleware
+ * @param {Object|Function|Class|Transform} Address instance of Model Object
+ *
+ * @description renders index view with the corresonding data
+ *
+ * * @return does not return anything
+ *
+ */
+
+    async index(ctx, next, Address = new Model({table: 'addresses'})) {
+        await ctx.render('index', { addresses: await Address.membersDetails(), count: await Address.count() });
+    }
+
+   /**
+   * @name store
    * @function
    *
-   * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-   * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
+   * @param {Object|Stream} ctx Koa contect Object
    * @param {Object|Function} next middleware
-   * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-   *
-   * @description gets and return all users from the dataController
+   * @description stores a member or multiple users to  dataController
    *
    * @return {Object|Array|List}  users collections/array/object
    *
    */
-  dbPath(path = '/data/sqlitedb'){
-    return process.cwd() + path
-  }
+   async store(ctx, next) { }
 
-    async index(ctx, next, Address = new Model({table: 'addresses'})) {}
-
-    /**
-     * @name store
-     * @function
-     *
-     * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-     * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
-     * @param {Object|Function} next middleware
-     * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-     *
-     * @description stores a user or multiple users to  dataController
-     *
-     * @return {Object|Array|List}  users collections/array/object
-     *
-     */
-    async store(ctx, next) { }
+   /**
+    * @name show
+    * @function
+    *
+    * @param {Object|Stream} ctx Koa contect Object
+    * @param {Object|Function} next middleware
+    * @description finds a member by id (':id') or username (':username') or email (':email') and returns it
+    *
+    * @return {Object}  user object
+    *
+    */
+   async show(ctx, next) { }
+ 
 
     /**
-     * @name show
-     * @function
-     *
-     * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-     * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
-     * @param {Object|Function} next middleware
-     * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-     *
-     * @description finds a user by id (':id') or username (':username') or email (':email') and returns it
-     *
-     * @return {Object}  user object
-     *
-     */
-    async show(ctx, next) { }
-
-    /**
-     * @name edit
-     * @function
-     *
-     * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-     * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
-     * @param {Object|Function} next middleware
-     * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-     *
-     * @description finds a user by id (':id') or username (':username') or email (':email') and returns it to a view (if any) for editing/updating
-     *
-     * @return {Object}  user object
-     *
-     */
-    async edit(ctx, next) { }
-
-    /**
-     * @name update
-     * @function
-     *
-     * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-     * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
-     * @param {Object|Function} next middleware
-     * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-     *
-     * @description updates a user by id (':id') or username (':username') or email (':email')
-     *
-     * @return {Object}  user object
-     *
-     */
-    async update(ctx, next) { }
-
-    /**
-     * @name destroy
-     * @function
-     *
-     * @param {Object|Stream} req readable stream: NodeJs Native HTTP Server Request Object
-     * @param {Object|Stream} res writable stream: NodeJs Native HTTP Server Response Object
-     * @param {Object|Function} next middleware
-     * @param {Object|Function|Stream} user instance of the User Model: An extension of NodeJs Native Transform Stream
-     *
-     * @description delete a user by id (':id') or username (':username') or email (':email')
-     *
-     * @return {Object}  user object
-     *
-     */
-    async destroy(ctx, next) { }
+   * @name edit
+   * @function
+   *
+   * @param {Object|Stream} ctx Koa contect Object
+   * @param {Object|Function} next middleware
+   * @description finds a member by id (':id') or username (':username') or email (':email') and returns it to a view (if any) for editing/updating
+   *
+   * @return {Object}  user object
+   *
+   */
+    async edit(ctx, next) {
+     
+    }
+ 
+   /**
+    * @name update
+    * @function
+    *
+   * @param {Object|Stream} ctx Koa contect Object
+   * @param {Object|Function} next middleware
+    * @description updates a member by id (':id') or username (':username') or email (':email')
+    *
+    * @return {Object}  user object
+    *
+    */
+   async update(ctx, next) { }
+ 
+   /**
+    * @name destroy
+    * @function
+    *
+    * @param {Object|Stream} ctx Koa contect Object
+    * @param {Object|Function} next middleware
+    * @description delete a member by id (':id') or username (':username') or email (':email')
+    *
+    * @return {Object}  user object
+    *
+    */
+   async destroy(ctx, next) { }
 
 }
 module.exports = AddressesController;

@@ -19,13 +19,6 @@
  */
 
 const Model = require('../../models/Model');
-const RedisCache = require('../../../src/modules/redis-cache');
-const pagination = require('../../../src/modules/pagination');
-const {createClient} = require('redis')
-
-const redisCacheMember = require('../../../src/modules/redisCacheMember');
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
 class HomeController extends require("./Controller") {
 
   constructor(...arrayOfObjects) {
@@ -49,7 +42,7 @@ class HomeController extends require("./Controller") {
   }
 
 
-  /**
+/**
  * @name index
  * @function
  *
@@ -59,7 +52,7 @@ class HomeController extends require("./Controller") {
  *
  * @description renders index view with the corresonding data
  *
- * @return {Object|Array|List}  users collections/array/object
+ * * @return does not return anything
  *
  */
 
@@ -67,7 +60,7 @@ class HomeController extends require("./Controller") {
     await ctx.render('index', { members: await Member.membersDetails(), count: await Member.count() });
   }
 
-   /**
+/**
  * @name firstHundred
  * @function
  *
@@ -77,21 +70,22 @@ class HomeController extends require("./Controller") {
  *
  * @description renders index view with the corresonding data
  *
- * @return {Object|Array|List}  users collections/array/object
+ * @return does not return anything
  *
  */
 
    async firstHundred(ctx, next, Member = new Model({ table: 'members' })) {
-    // await redisCacheMember(ctx)
-    // ctx.body = await Member.firstCountMembersDetails(100);
-    // await Member.dropTable();
+
     const members  = await Member.firstCountMembersDetails(100)
     await ctx.render('index', { members, count: members.length });
+
   }
 
 
 
-    /**
+
+
+/**
  * @name loadMore
  * @function
  *
@@ -101,27 +95,7 @@ class HomeController extends require("./Controller") {
  *
  * @description renders index view with the corresonding data
  *
- * @return {Object|Array|List}  users collections/array/object
- *
- */
-
-    async load200(ctx, next, Member = new Model({ table: 'members' })) {
-      const members  = await Member.firstCountMembersDetails(200)
-      await ctx.render('index', { members, count: members.length });
-    }
-  
-
-    /**
- * @name loadMore
- * @function
- *
- * @param {Object|Stream} ctx Koa contect Object
- * @param {Object|Function} next middleware
- * @param {Object|Function|Class|Transform} Member instance of Model Object
- *
- * @description renders index view with the corresonding data
- *
- * @return {Object|Array|List}  users collections/array/object
+ * @return does not return anything
  *
  */
 
@@ -135,7 +109,6 @@ class HomeController extends require("./Controller") {
         return;
       }
       if(!Number.isInteger(parseInt(quantity))) return await ctx.render('error', { error: 'Input quantity must a number: a whole number!', count: 'NO COUNT!' });
-        
       
       const members  = await Member.firstCountMembersDetails(Number(quantity))
       await ctx.render('index', { members, count: members.length });
@@ -149,7 +122,6 @@ class HomeController extends require("./Controller") {
    *
    * @param {Object|Stream} ctx Koa contect Object
    * @param {Object|Function} next middleware
-   * @param {Object|Function|Class|Transform} Member instance of Model Object
    * @description stores a member or multiple users to  dataController
    *
    * @return {Object|Array|List}  users collections/array/object
@@ -180,7 +152,6 @@ class HomeController extends require("./Controller") {
    *
    * @param {Object|Stream} ctx Koa contect Object
    * @param {Object|Function} next middleware
-   * @param {Object|Function|Class|Transform} Member instance of Model Object
    * @description finds a member by id (':id') or username (':username') or email (':email') and returns it to a view (if any) for editing/updating
    *
    * @return {Object}  user object
@@ -196,7 +167,6 @@ class HomeController extends require("./Controller") {
    *
   * @param {Object|Stream} ctx Koa contect Object
   * @param {Object|Function} next middleware
-  * @param {Object|Function|Class|Transform} Member instance of Model Object
    * @description updates a member by id (':id') or username (':username') or email (':email')
    *
    * @return {Object}  user object
@@ -210,7 +180,6 @@ class HomeController extends require("./Controller") {
    *
    * @param {Object|Stream} ctx Koa contect Object
    * @param {Object|Function} next middleware
-   * @param {Object|Function|Class|Transform} Member instance of Model Object
    * @description delete a member by id (':id') or username (':username') or email (':email')
    *
    * @return {Object}  user object
