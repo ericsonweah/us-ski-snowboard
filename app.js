@@ -2,6 +2,17 @@ if (require.main === module) {
 	throw new Error('Do not run directly. Use server.js to start.');
 }
 
+'use strict';
+/*
+|--------------------------------------------------------------------------
+| Cluster module 
+|--------------------------------------------------------------------------
+|
+| For cup usage and efficieny
+
+|
+*/
+
 
 const {join} = require('path')
 const Koa = require('koa');
@@ -10,14 +21,7 @@ const bodyParser = require('koa-bodyparser');
 const json = require('koa-json');
 // const {Server} = require('http');
 
-
-
-
-
-
 const koaStatic = require('koa-static');
-
-
 
 const app = new Koa();
 
