@@ -9,17 +9,17 @@
  *    Dev Website: https://www.ericsonweah.dev
  *    Other Website: https://www.ericsonsweah.com
  *
- * @module HomeController
+ * @module HomeAPIController
  * @kind class
  *
  * @extends Controller
  * @requires Controller
  *
- * @classdesc HomeController class
+ * @classdesc HomeAPIController class
  */
 
 const Model = require('../../models/Model');
-class HomeController extends require("./Controller") {
+class HomeAPIController extends require("./Controller") {
 
   constructor(...arrayOfObjects) {
 
@@ -32,9 +32,9 @@ class HomeController extends require("./Controller") {
     });
 
     // auto bind methods
-    this.autobind(HomeController);
+    this.autobind(HomeAPIController);
     // auto invoke methods
-    this.autoinvoker(HomeController);
+    this.autoinvoker(HomeAPIController);
     // add other classes method if methods do not already exist. Argument order matters!
     // this.methodizer(..classList);
     //Set the maximum number of listeners to infinity
@@ -57,7 +57,11 @@ class HomeController extends require("./Controller") {
  */
 
   async index(ctx, next, Member = new Model({ table: 'members' })) {
-    await ctx.render('index', { members: await Member.membersDetails(), count: await Member.count() });
+    ctx.body = {
+        members: await Member.membersDetails(),
+        count: await Member.count()
+    }
+    // await ctx.render('index', { members: await Member.membersDetails(), count: await Member.count() });
   }
 
 /**
@@ -75,9 +79,9 @@ class HomeController extends require("./Controller") {
  */
 
    async firstHundred(ctx, next, Member = new Model({ table: 'members' })) {
-    
-    const members  = await Member.firstCountMembersDetails(100)
-    await ctx.render('index', { members, count: members.length });
+
+    ctx.body  = await Member.firstCountMembersDetails(100)
+    // await ctx.render('index', { members, count: members.length });
 
   }
 
@@ -110,8 +114,8 @@ class HomeController extends require("./Controller") {
       }
       if(!Number.isInteger(parseInt(quantity))) return await ctx.render('error', { error: 'Input quantity must a number: a whole number!', count: 'NO COUNT!' });
       
-      const members  = await Member.firstCountMembersDetails(Number(quantity))
-      await ctx.render('index', { members, count: members.length });
+      ctx.body   = await Member.firstCountMembersDetails(Number(quantity))
+    //   await ctx.render('index', { members, count: members.length });
     }
 
 
@@ -144,8 +148,8 @@ class HomeController extends require("./Controller") {
    *
    */
   async show(ctx, next, Member = new Model({ table: 'members' })) { 
-    // ctx.body = await Member.findById(ctx.params.id)
-    await ctx.render('member', { member: await Member.findById(ctx.params.id), count: await Member.count() });
+    ctx.body = await Member.findById(ctx.params.id)
+    // await ctx.render('member', { member: await Member.findById(ctx.params.id), count: await Member.count() });
   }
 
   /**
@@ -190,4 +194,4 @@ class HomeController extends require("./Controller") {
   async destroy(ctx, next) { }
 
 }
-module.exports = HomeController;
+module.exports = HomeAPIController;
