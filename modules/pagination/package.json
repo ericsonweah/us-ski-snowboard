@@ -1,0 +1,22 @@
+{
+  "name": "pagination",
+  "version": "0.0.0",
+  "description": "pagination",
+  "main": "index.js",
+  "bin": {
+    "pagination": "bin/index.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "vitest --globals"
+  },
+  "keywords": [
+    "pagination"
+  ],
+  "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
+  "license": "MIT"
+}

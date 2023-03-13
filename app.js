@@ -10,6 +10,7 @@ const bodyParser = require('koa-bodyparser');
 const json = require('koa-json');
 const redis = require('redis');
 const {Server} = require('http');
+const client = redis.createClient();
 
 
 
@@ -26,7 +27,7 @@ render(app, {
   layout: 'layout',
   viewExt: 'html',
   cache: false,
-     debug: false
+  debug: false
 });
  
 // Register Routes
@@ -40,6 +41,15 @@ const http = Server(app.callback());
 const io = require('socket.io')(http);
 
 // const server = app.listen(3000);
+
+
+client.on('connect', () => {
+  console.log('Redis client connected');
+});
+
+client.on('error', (err) => {
+  console.log(`Error connecting to Redis: ${err}`);
+});
 
 io.on('connection', (socket) => {
   console.log('Socket connected:', socket.id);
