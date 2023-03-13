@@ -16,32 +16,21 @@ process.on('unhandledRejection', function(err) {
 });
 
 
-
-
 if (cluster.isMaster) {
   for (let i = 0; i < os.cpus().length; i++) {
     cluster.fork();
   }
 } else {
-  // const { app } = require('./app');
   const app = require('./app');
-  // const { initDb } = require('./db');
-  // const usersRouter = require('./users');
-
-  // initDb();
-
-  // app.use(usersRouter.routes());
-  // app.use(usersRouter.allowedMethods());
-
-  // app.listen(3000);
-
-  // console.log(`Worker ${cluster.worker.id} running`);
-  module.exports = app.listen(PORT, HOST, function(err) {
-    if (err) {
-      throw err;
-    }
-    // console.log(`Server listening on port: ${HOST}:${PORT}`);
-    console.log(`Worker ${cluster.worker.id} running`);
-  });
+  
+  app.listen(3000);
+  console.log(`Worker ${cluster.worker.id} running`);
+  // module.exports = app.listen(PORT, HOST, function(err) {
+  //   if (err) {
+  //     throw err;
+  //   }
+  //   // console.log(`Server listening on port: ${HOST}:${PORT}`);
+  //   console.log(`Worker ${cluster.worker.id} running`);
+  // });
   
 }
