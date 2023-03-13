@@ -134,10 +134,9 @@ class HomeController extends require("./Controller") {
         ctx.body = { error: 'Invalid request body' };
         return;
       }
-      if(!Number.isInteger(parseInt(quantity))){
-        ctx.body = { error: 'Input quantity must a number, a whole number' };
-        return;
-      }
+      if(!Number.isInteger(parseInt(quantity))) return await ctx.render('error', { error: 'Input quantity must a number: a whole number!', count: 'NO COUNT!' });
+        
+      
       const members  = await Member.firstCountMembersDetails(Number(quantity))
       await ctx.render('index', { members, count: members.length });
     }
