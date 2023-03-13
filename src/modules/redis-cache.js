@@ -1,9 +1,9 @@
 const redis = require('redis');
 const client = redis.createClient
-const pagination = require('pagination');
-
+const pagination = require('./pagination');
 
 module.exports = (ctx, count) => {
+  
   const { limit, page, offset, totalPages, hasNextPage, hasPreviousPage } = pagination(ctx.query, count);
 
   const cacheKey = `members:${limit}:${page}`;

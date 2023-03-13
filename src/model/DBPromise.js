@@ -9,20 +9,22 @@
  *    Dev Website: https://www.ericsonweah.dev
  *    Other Website: https://www.ericsonsweah.com
  *
- * @module AsyncAwait
+ * @module DBPromise
  * @kind class
  *
  * @extends Base
  * @requires Base
  * @requires sqlite3
  *
- * @classdesc AsyncAwait class
+ * @classdesc DBPromise class
  */
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./data/sqlitedb');
+const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
 
-class AsyncAwait extends require("../Base") {
+
+
+class DBPromise extends require("../Base") {
 
   constructor(...arrayOfObjects) {
 
@@ -35,9 +37,9 @@ class AsyncAwait extends require("../Base") {
     });
 
     // auto bind methods
-    this.autobind(AsyncAwait);
+    this.autobind(DBPromise);
     // auto invoke methods
-    this.autoinvoker(AsyncAwait);
+    this.autoinvoker(DBPromise);
     // add other classes method if methods do not already exist. Argument order matters!
     // this.methodizer(..classList);
     //Set the maximum number of listeners to infinity
@@ -66,6 +68,41 @@ class AsyncAwait extends require("../Base") {
       });
     });
     return records;
+  }
+
+  async dropTable(table = this.table) {
+    const records = await new Promise((resolve, reject) => {
+      db.all(`DROP ${table}`, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+    return records;
+  }
+
+
+  async firstCountMembersDetails(count = 10) {
+    const records = await new Promise((resolve, reject) => {
+      db.all(`SELECT DISTINCT * FROM members INNER JOIN addresses ON members.id = addresses.memberId LIMIT ${count}`, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+    return records;
+  }
+
+  async count (table = this.table || 'members') {
+    const count = await new Promise((resolve, reject) => {
+      db.get(`SELECT COUNT(*) AS count FROM ${table}`, (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row.count);
+        }
+      });
+    });
+    return count;
+
   }
 
   async findBy(column = 'colum name', value = 'column value', success = 'success', error = 'error', table = this.table || 'members') {
@@ -126,6 +163,15 @@ class AsyncAwait extends require("../Base") {
     return records;
   }
 
+  async findById(id, table = this.table || 'members') {
+    const member = await new Promise((resolve, reject) => {
+      db.get(`SELECT * FROM members INNER JOIN addresses ON members.id = addresses.memberId WHERE members.id='${id}' LIMIT 1`, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+    return member;
+  }
   async findByFirstName(firstName, table = this.table || 'members') {
     return await this.findBy('firstName', firstName, 'findByFirstName', 'findByFirstName-error', table);
   }
@@ -249,6 +295,9 @@ class AsyncAwait extends require("../Base") {
 
 }
 
-module.exports = AsyncAwait;
+module.exports = DBPromise;
+
+
+
 
 

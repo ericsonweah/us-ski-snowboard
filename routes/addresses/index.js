@@ -10,7 +10,6 @@ module.exports = (app = new Koa(), Router = new KoaRouter()) => {
     Router.get('/addresses', index);
 
 
-
     app.use(Router.routes())
         .use(Router.allowedMethods());
 }

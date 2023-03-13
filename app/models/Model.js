@@ -15,9 +15,8 @@
  * @classdesc Model class
  */
 
-const BaseModel = require('../../src/models/Model')
 
-class Model extends BaseModel {
+class Model extends require('../../src/model') {
 
     constructor(...arrayOfObjects) {
 

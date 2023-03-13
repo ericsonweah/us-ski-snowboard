@@ -29,7 +29,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">US SKI & SNOWBOARD</a>
+            <a class="navbar-brand" href="javascript:void(0)">US SKI & SNOWBOARD <strong class="text-success"> <%- count %></strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,17 +43,11 @@
     <div class="container-fluid mt-3 w3-mobile">
         <%- body %>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js" integrity="sha512-AI5A3zIoeRSEEX9z3Vyir8NqSMC1pY7r5h2cE+9J6FLsoEmSSGLFaqMQw8SWvoONXogkfFrkQiJfLeHLz3+HOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js" integrity="sha512-AI5A3zIoeRSEEX9z3Vyir8NqSMC1pY7r5h2cE+9J6FLsoEmSSGLFaqMQw8SWvoONXogkfFrkQiJfLeHLz3+HOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
     <script>
-        const socket = io.connect("http://localhost:3000",{secure: true});
-        console.log(socket);
-        socket.on('new-user', (data) => {
-          console.log('New user created:', data);
-        });
-      </script>
-    <script>
-        console.log('it is supposed to work!');
         $(document).ready(function () {
+           
 
             $('#search').keyup(function () {
 

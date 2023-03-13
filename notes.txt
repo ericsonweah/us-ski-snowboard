@@ -1,0 +1,5 @@
+Commmenting and documentation
+1. Model 
+2. Controllers 
+3. Routes 
+4. Modules 

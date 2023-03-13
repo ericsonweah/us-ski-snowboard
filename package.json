@@ -3,23 +3,24 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "ioredis": "^5.3.1",
+    "jest": "^29.5.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-ejs": "^4.3.0",
     "koa-json": "^2.0.2",
+    "koa-redis": "^4.0.1",
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "koa-views": "^8.0.0",
     "koa-views-render": "^0.0.1",
-    "sqlite": "^4.0.23",
-    "sqlite3": "^5.1.4",
     "redis": "^4.6.5",
     "socket.io": "^4.6.1",
-    "supertest": "^6.3.3",
-    "ioredis": "^5.3.1",
-    "jest": "^29.5.0",
-    "chai": "^4.3.7",
-    "chai-http": "^4.3.0"
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.1.4",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
     "faker": "^5.5.3"

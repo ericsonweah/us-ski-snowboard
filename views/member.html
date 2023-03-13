@@ -1,5 +1,4 @@
 <div class='container-fluid'>
-    <% members.forEach(function(member){ %>
         <div class="row content member w3-mobile" >
             <div class="col p-3 text-dark w3-mobile">
                 <div class="name w3-row w3-mobile">
@@ -7,7 +6,7 @@
                         <strong>Name:</strong>
                     </div> 
                     <div class="w3-rest w3-mobile">
-                        <a href="members/<%- member.memberId; %>" style="text-decoration: none;"><%- member.firstName.toUpperCase(); %> <%- member.lastName.toUpperCase(); %></a>
+                        <a href="" style="text-decoration: none;"><%- member.firstName.toUpperCase(); %> <%- member.lastName.toUpperCase(); %></a>
                     </div>   
                 </div>
                 <div class="company w3-row w3-mobile">
@@ -65,14 +64,12 @@
                         <a href="<%- member.url.toUpperCase(); %> "><%- member.url.toUpperCase(); %> </a>
                     </div>   
                 </div>
-    
             </div>
             <div class="col p-3 text-dark w3-mobile w3-right">
                 <img src="<%- member.image; %>"  alt="Cinque Terre" style="max-width: 100%;
                 height: 100px;" class="w3-mobile">
             </div>
           </div>
-    <% }); %>
     </div>
     
     
