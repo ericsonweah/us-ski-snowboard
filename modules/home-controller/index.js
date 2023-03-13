@@ -18,7 +18,12 @@
  * @classdesc HomeController class
  */
 
+const redis = require('redis');
+const client = redis.createClient();
+
 const Model = require('model');
+
+const redisCache = require('redis-cache');
 
 class HomeController extends require("base") {
 
@@ -59,6 +64,9 @@ class HomeController extends require("base") {
    */
 
     async index(ctx, next, Member = new Model({table: 'members'})) {
+
+        const count = await Member.count();
+        redisCache(ctx, count);
         await ctx.render('index', {members: await Member.membersDetails()});
      }
     

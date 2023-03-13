@@ -37,7 +37,7 @@ require('./routes')(app);
 // Serve static files from public directory
 app.use(koaStatic('./public'));
 
-const http = Server(app.callback());
+const http = Server(app);
 const io = require('socket.io')(http);
 
 // const server = app.listen(3000);

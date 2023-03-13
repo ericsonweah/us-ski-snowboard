@@ -69,6 +69,20 @@ class DBPromise extends require("./base") {
     return records;
   }
 
+  async count (table = this.table || 'members') {
+    const count = await new Promise((resolve, reject) => {
+      db.get(`SELECT COUNT(*) AS count FROM ${table}`, (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row.count);
+        }
+      });
+    });
+    return count;
+  
+  }
+
   async findBy(column = 'colum name', value = 'column value', success = 'success', error = 'error', table = this.table || 'members') {
     const records = await new Promise((resolve, reject) => {
       db.all(`SELECT * FROM ${table} WHERE ${column}='${value}'`, (err, rows) => {

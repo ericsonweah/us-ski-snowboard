@@ -1,0 +1,27 @@
+{
+  "name": "redis-cache",
+  "version": "1.0.0",
+  "description": "redis-cache",
+  "main": "index.js",
+  "bin": {
+    "redis-cache": "bin/index.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "redis",
+    "sqlite"
+  ],
+  "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "pagination": "file:../pagination",
+    "sqlite3": "^5.1.4"
+  }
+}

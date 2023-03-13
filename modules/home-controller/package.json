@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "base": "file:../base",
-    "model": "file:../model"
+    "model": "file:../model",
+    "pagination": "file:../pagination"
   }
 }
