@@ -21,7 +21,7 @@
 
 const DBPromise = require('db-promise')
 
-class Model extends require("./base") {
+class Model extends require("base") {
 
     constructor(...arrayOfObjects) {
 

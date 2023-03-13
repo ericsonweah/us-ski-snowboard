@@ -22,7 +22,7 @@
 // const sqlite3 = require('sqlite3').verbose();
 // const db = new sqlite3.Database(process.cwd() +  '/data/sqlitedb');
 
-class DBPromise extends require("bases") {
+class DBPromise extends require("base") {
 
   constructor(...arrayOfObjects) {
 

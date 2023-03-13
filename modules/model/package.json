@@ -22,6 +22,7 @@
   "author": "Ericson S. Weah <ericson.weah@gmail.com> (https://www.ericsonweah.com/)",
   "license": "MIT",
   "dependencies": {
+    "base": "file:../base",
     "db-promise": "file:../db-promise"
   }
 }
