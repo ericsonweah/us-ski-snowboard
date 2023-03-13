@@ -27,15 +27,42 @@
 </head>
 
 <body>
+    
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">US SKI & SNOWBOARD <strong class="text-success"> <%- count %></strong></a>
+            <a class="navbar-brand" href="/">US SKI & SNOWBOARD <strong class="text-success"> <%- count %></strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
+             <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/all">Load All</a>
+                  </li>
+              <!-- <li class="nav-item">
+                <form class="d-flex">
+                    <input class="form-control me-3" type="text" placeholder="Load More By quantity" id='load-more'>
+                    <button class="btn btn-primary" type="button">LOAD</button>
+                </form>
+              </li> -->
+
+    
+            </ul>
+
+            <ul class="navbar-nav me-auto justify-content-center">
+              <li class="nav-item">
+                <form class="d-flex" method="post" action="/load">
+                    <input class="form-control me-3" type="text" name="quantity" placeholder="Load More By quantity" id='quantity'>
+                    <button class="btn btn-primary" type="submit">LOAD</button>
+                </form>
+              </li>
+            </ul>
+
+            
             <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search" id='search'>
-                <button class="btn btn-primary" type="button">Search</button>
+                <input class="form-control me-3" type="text" placeholder="By First/Last Name" id='search'>
+                <!-- <button class="btn btn-primary" type="button">Search</button> -->
             </form>
         </div>
         </div>

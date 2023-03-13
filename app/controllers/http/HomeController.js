@@ -64,12 +64,84 @@ class HomeController extends require("./Controller") {
  */
 
   async index(ctx, next, Member = new Model({ table: 'members' })) {
+    await ctx.render('index', { members: await Member.membersDetails(), count: await Member.count() });
+  }
+
+   /**
+ * @name firstHundred
+ * @function
+ *
+ * @param {Object|Stream} ctx Koa contect Object
+ * @param {Object|Function} next middleware
+ * @param {Object|Function|Class|Transform} Member instance of Model Object
+ *
+ * @description renders index view with the corresonding data
+ *
+ * @return {Object|Array|List}  users collections/array/object
+ *
+ */
+
+   async firstHundred(ctx, next, Member = new Model({ table: 'members' })) {
     // await redisCacheMember(ctx)
     // ctx.body = await Member.firstCountMembersDetails(100);
     // await Member.dropTable();
-    await ctx.render('index', { members: await Member.firstCountMembersDetails(100), count: await Member.count() });
+    const members  = await Member.firstCountMembersDetails(100)
+    await ctx.render('index', { members, count: members.length });
   }
 
+
+
+    /**
+ * @name loadMore
+ * @function
+ *
+ * @param {Object|Stream} ctx Koa contect Object
+ * @param {Object|Function} next middleware
+ * @param {Object|Function|Class|Transform} Member instance of Model Object
+ *
+ * @description renders index view with the corresonding data
+ *
+ * @return {Object|Array|List}  users collections/array/object
+ *
+ */
+
+    async load200(ctx, next, Member = new Model({ table: 'members' })) {
+      const members  = await Member.firstCountMembersDetails(200)
+      await ctx.render('index', { members, count: members.length });
+    }
+  
+
+    /**
+ * @name loadMore
+ * @function
+ *
+ * @param {Object|Stream} ctx Koa contect Object
+ * @param {Object|Function} next middleware
+ * @param {Object|Function|Class|Transform} Member instance of Model Object
+ *
+ * @description renders index view with the corresonding data
+ *
+ * @return {Object|Array|List}  users collections/array/object
+ *
+ */
+
+    async loadMore(ctx, next, Member = new Model({ table: 'members' })) {
+
+      const {quantity } = ctx.request.body;
+
+      if (!quantity) {
+        ctx.status = 400;
+        ctx.body = { error: 'Invalid request body' };
+        return;
+      }
+      if(!Number.isInteger(parseInt(quantity))){
+        ctx.body = { error: 'Input quantity must a number, a whole number' };
+        return;
+      }
+      const members  = await Member.firstCountMembersDetails(Number(quantity))
+      await ctx.render('index', { members, count: members.length });
+    }
+  
 
 
   /**
