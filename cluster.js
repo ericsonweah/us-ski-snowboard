@@ -23,14 +23,14 @@ if (cluster.isMaster) {
 } else {
   const app = require('./app');
   
-  app.listen(3000);
-  console.log(`Worker ${cluster.worker.id} running`);
-  // module.exports = app.listen(PORT, HOST, function(err) {
-  //   if (err) {
-  //     throw err;
-  //   }
-  //   // console.log(`Server listening on port: ${HOST}:${PORT}`);
-  //   console.log(`Worker ${cluster.worker.id} running`);
-  // });
+  // app.listen(3000);
+  // console.log(`Worker ${cluster.worker.id} running`);
+  module.exports = app.listen(PORT, HOST, function(err) {
+    if (err) {
+      throw err;
+    }
+    // console.log(`Server listening on port: ${HOST}:${PORT}`);
+    console.log(`Worker ${cluster.worker.id} running`);
+  });
   
 }
